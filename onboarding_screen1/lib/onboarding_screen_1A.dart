@@ -91,7 +91,10 @@ class _Onboarding1AState extends State<Onboarding1A> {
                     onPressed: () {},
                     child: Row(
                       children: [
-                        Icon(FontAwesomeIcons.google),
+                        Icon(
+                          FontAwesomeIcons.google,
+                          size: 16,
+                        ),
                         SizedBox(width: 8),
                         Text('Google',
                             style: TextStyle(
