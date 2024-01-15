@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:onboarding_screens_15/onboarding_screen_1A.dart';
 import 'package:onboarding_screens_15/onboarding_screen_1B.dart';
-import 'package:onboarding_screens_15/onboarding_screen_1C.dart';
-import 'package:onboarding_screens_15/onboarding_screen_2A.dart';
-import 'package:onboarding_screens_15/onboarding_screen_3A.dart';
 // import 'my_home.dart';
 
 class MyApp extends StatelessWidget {
@@ -11,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Onboarding1B(),
+      home: Onboarding1A(),
     );
   }
 }

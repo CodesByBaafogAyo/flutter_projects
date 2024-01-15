@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:onboarding_screens_15/onboarding_screen_1C.dart';
 
 class Onboarding1B extends StatefulWidget {
   const Onboarding1B({Key? key}) : super(key: key);
@@ -20,7 +19,7 @@ class _Onboarding1BState extends State<Onboarding1B> {
           image: DecorationImage(
               image: AssetImage('images/bottomimage.png'),
               fit: BoxFit.fitWidth,
-              alignment: AlignmentDirectional.bottomStart),
+              alignment: AlignmentDirectional.bottomEnd),
         ),
         padding: EdgeInsets.symmetric(vertical: 70.0, horizontal: 30.0),
         constraints: BoxConstraints.expand(),
@@ -36,7 +35,7 @@ class _Onboarding1BState extends State<Onboarding1B> {
                   fit: BoxFit.contain, // Adjust the fit property as needed
                 ),
                 Text(
-                  'Log In To Brand',
+                  'Sign Up To Brand',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 32,
@@ -118,7 +117,7 @@ class _Onboarding1BState extends State<Onboarding1B> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
-                    'Or Log In Using Email',
+                    'Or Sign Up Using Email',
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[400],
@@ -135,6 +134,32 @@ class _Onboarding1BState extends State<Onboarding1B> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(height: 20),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'FULL NAME',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[400],
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Container(
+                    height: 60,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'John Doe',
+                      ),
+                      readOnly: true,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
             Container(
@@ -162,7 +187,7 @@ class _Onboarding1BState extends State<Onboarding1B> {
                 ],
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -201,18 +226,26 @@ class _Onboarding1BState extends State<Onboarding1B> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(width: 30),
-                            Text(
-                              'Forgot Password?',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey[500],
+                        Container(
+                          child: Row(
+                            children: [
+                              Text(
+                                'I accept the',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                ),
                               ),
-                            )
-                          ],
+                              SizedBox(width: 8),
+                              Text(
+                                'Terms and Condition',
+                                style: TextStyle(
+                                    color: Colors.grey[800],
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -246,7 +279,7 @@ class _Onboarding1BState extends State<Onboarding1B> {
                   );
                 },
                 child: Text(
-                  'Log In',
+                  'Create an Account',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -255,13 +288,13 @@ class _Onboarding1BState extends State<Onboarding1B> {
                 ),
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             Container(
               child: Row(
                 children: [
                   SizedBox(width: 60),
                   Text(
-                    'New to Brand?',
+                    'Existing Member?',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 20,
@@ -270,13 +303,10 @@ class _Onboarding1BState extends State<Onboarding1B> {
                   SizedBox(width: 8),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Onboarding1C()),
-                      );
+                      Navigator.pop(context);
                     },
                     child: Text(
-                      'Sign Up',
+                      'Sign In',
                       style: TextStyle(
                         color: Colors.blueAccent,
                         fontSize: 20,
