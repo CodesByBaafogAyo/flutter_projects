@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
+import 'card.dart'; // Assuming this is where your Card widget is defined
+import 'card_details.dart';
 
 class BasicListApp extends StatefulWidget {
-  const BasicListApp({super.key});
+  const BasicListApp({Key? key}) : super(key: key);
 
   @override
   State<BasicListApp> createState() => _BasicListAppState();
 }
 
 class _BasicListAppState extends State<BasicListApp> {
-  List<String> FeedItems = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-    "Item 7",
-    "Item 8",
-  ];
+  final CardDetails cardDetails = CardDetails();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,51 +21,92 @@ class _BasicListAppState extends State<BasicListApp> {
           Text(
             'Skip Now',
             style: TextStyle(
-                color: Colors.white, decoration: TextDecoration.underline),
+              color: Colors.white,
+              decoration: TextDecoration.underline,
+            ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           )
         ],
         backgroundColor: Colors.black,
-        leading: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-          child: Text('Back',
-              style: TextStyle(
-                  color: Colors.white, decoration: TextDecoration.underline)),
+        leading: Text(
+          'Back',
+          style: TextStyle(
+            color: Colors.white,
+            decoration: TextDecoration.underline,
+          ),
         ),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        // color: Colors.red,
         child: Column(
           children: [
-            Text(
-              'Choose what you will like to make your habit',
-              style: TextStyle(
-                fontSize: 36,
-                color: Colors.white,
+            Container(
+              width: 230,
+              child: Text(
+                'Choose what you would like to make your habit',
+                style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
             Expanded(
               child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: 15,
-                  itemBuilder: (BuildContext context, int pos) {
-                    String name = FeedItems.length;
-                    return Card(
-                      shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      child: SizedBox(
-                        child: ListTile(
-                          title: Text(name),
-                          subtitle: Text('Position:' + position.toString()),
-                          trailing: Icon(Icons.abc_sharp),
+                scrollDirection: Axis.vertical,
+                itemCount: cardDetails.getCardCount(),
+                itemBuilder: (BuildContext context, int pos) {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Stack(
+                      children: [
+                        Card(
+                          color: cardDetails.getCardColor(pos),
+                          shape: BeveledRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ListTile(
+                            contentPadding: EdgeInsets.all(20),
+                            title: Text(
+                              cardDetails.getCardTitle(pos),
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            subtitle: Text(cardDetails.getCardSubtitle(pos)),
+                            trailing: Container(
+                              width: 50,
+                              height: 50,
+                              child: cardDetails.getCardImage(pos),
+                            ),
+                          ),
                         ),
-                      ),
-                    );
-                  }),
+                        Positioned(
+                          top: -10,
+                          right: -10,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              border: Border.all(
+                                color:
+                                    Colors.black, // Adjust the color as needed
+                                width: 6.0, // Adjust the width as needed
+                              ),
+                              color: Colors.white,
+                            ),
+                            width: 50,
+                            height: 50,
+                            child: Icon(Icons.check_circle_outline_outlined),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
