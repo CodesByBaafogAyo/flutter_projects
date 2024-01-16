@@ -1,0 +1,22 @@
+name: holiday2_6
+description: "A new Flutter project for the holiday, bmi_calculator"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  font_awesome_flutter: ^9.0.0
+  quiver: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
