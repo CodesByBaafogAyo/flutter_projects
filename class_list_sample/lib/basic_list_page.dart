@@ -65,7 +65,7 @@ class _BasicListAppState extends State<BasicListApp> {
                         Card(
                           color: cardDetails.getCardColor(pos),
                           shape: BeveledRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(2),
                           ),
                           child: ListTile(
                             contentPadding: EdgeInsets.all(20),
